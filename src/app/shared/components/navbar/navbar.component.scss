@@ -1,0 +1,13 @@
+.spacer {
+  flex: 1 1 auto;
+}
+.button-row {
+  display: table-cell;
+  max-width: 600px;
+}
+.flex-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: center;
+}

@@ -1,0 +1,204 @@
+<!-- Text Header -->
+<header class="w-full container gap-4 mx-auto">
+  <div class="flex flex-col items-center py-10">
+    <a class="font-bold text-gray-800 uppercase hover:text-gray-700 text-5xl">
+      Create blog
+    </a>
+    <p class="text-lg text-gray-600">Lorem Ipsum Dolor Sit Amet</p>
+  </div>
+</header>
+
+<div class="w-full">
+  <!-- <quill-editor [(ngModel)]="blogContent" format="json" class="w-full h-80" />
+  <quill-view [content]="blogContent" format="json" theme="snow" /> -->
+
+  <form class="border border-gray-200 p-4">
+    <div class="space-y-12">
+      <div class="border-b border-gray-900/10 pb-12">
+        <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+          <div class="sm:col-span-6">
+            <label
+              for="blog-title"
+              class="block text-sm font-medium leading-6 text-gray-900"
+              >Blog title</label
+            >
+            <div class="mt-2">
+              <input
+                type="text"
+                name="blog-title"
+                [(ngModel)]="blogTitle"
+                id="blog-title"
+                class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+              />
+            </div>
+          </div>
+
+          <div class="col-span-full">
+            <label
+              for="about"
+              class="block text-sm font-medium leading-6 text-gray-900"
+              >BLOG</label
+            >
+            <div class="mt-2">
+              <quill-editor
+                name="blogContent"
+                [(ngModel)]="blogContent"
+                format="json"
+                class="w-full h-80 rounded-md"
+              />
+            </div>
+            <p class="mt-3 text-sm leading-6 text-gray-600">
+              Write your blog here.
+            </p>
+          </div>
+
+          <!-- <div class="col-span-full">
+            <label
+              for="cover-photo"
+              class="block text-sm font-medium leading-6 text-gray-900"
+              >Cover photo</label
+            >
+            <div
+              class="mt-2 flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10"
+            >
+              <div class="text-center">
+                <svg
+                  class="mx-auto h-12 w-12 text-gray-300"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  aria-hidden="true"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M1.5 6a2.25 2.25 0 012.25-2.25h16.5A2.25 2.25 0 0122.5 6v12a2.25 2.25 0 01-2.25 2.25H3.75A2.25 2.25 0 011.5 18V6zM3 16.06V18c0 .414.336.75.75.75h16.5A.75.75 0 0021 18v-1.94l-2.69-2.689a1.5 1.5 0 00-2.12 0l-.88.879.97.97a.75.75 0 11-1.06 1.06l-5.16-5.159a1.5 1.5 0 00-2.12 0L3 16.061zm10.125-7.81a1.125 1.125 0 112.25 0 1.125 1.125 0 01-2.25 0z"
+                    clip-rule="evenodd"
+                  />
+                </svg>
+                <div class="mt-4 flex text-sm leading-6 text-gray-600">
+                  <label
+                    for="file-upload"
+                    class="relative cursor-pointer rounded-md bg-white font-semibold text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-indigo-500"
+                  >
+                    <span>Upload a file</span>
+                    <input
+                      id="file-upload"
+                      name="file-upload"
+                      type="file"
+                      class="sr-only"
+                    />
+                  </label>
+                  <p class="pl-1">or drag and drop</p>
+                </div>
+                <p class="text-xs leading-5 text-gray-600">
+                  PNG, JPG, GIF up to 10MB
+                </p>
+              </div>
+            </div>
+          </div> -->
+        </div>
+      </div>
+
+      <div class="border-b border-gray-900/10 pb-12">
+        <h2 class="text-base font-semibold leading-7 text-gray-900">
+          Go live?
+        </h2>
+        <p class="mt-1 text-sm leading-6 text-gray-600">
+          Do you what this blog to go live immidiately? You can change this
+          later as well.
+        </p>
+
+        <label
+          class="inline-flex items-center p-2 rounded-md cursor-pointer text-gray-800"
+          for="Toggle3"
+        >
+          <input
+            class="hidden peer"
+            name="blogStatus"
+            [(ngModel)]="blogStatus"
+            id="Toggle3"
+            type="checkbox"
+          />
+          <span
+            class="px-4 py-2 rounded-l-md bg-green-500 peer-checked:text-black text-white peer-checked:bg-gray-300"
+          >
+            Publish now
+          </span>
+          <span
+            class="px-4 py-2 rounded-r-md bg-gray-300 peer-checked:bg-green-500 text-black peer-checked:text-white"
+          >
+            Don't publish
+          </span>
+        </label>
+      </div>
+    </div>
+
+    <div class="mt-6 flex items-center justify-end gap-x-6">
+      <button
+        (click)="toggleModal()"
+        type="submit"
+        class="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+      >
+        Preview
+      </button>
+      <button
+        type="button"
+        class="text-sm font-semibold leading-6 text-gray-900"
+      >
+        Cancel
+      </button>
+      <button
+        (click)="saveBlog()"
+        type="submit"
+        class="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+      >
+        Save
+      </button>
+    </div>
+  </form>
+</div>
+
+<div
+  *ngIf="showModal"
+  class="overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center flex"
+>
+  <div class="relative w-auto my-6 mx-auto max-w-6xl">
+    <!--content-->
+    <div
+      class="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none"
+    >
+      <!--header-->
+      <div
+        class="flex items-start justify-between p-5 border-b border-solid border-blueGray-200 rounded-t"
+      >
+        <h3 class="text-3xl font-semibold">Modal Title</h3>
+        <button
+          class="p-1 ml-auto bg-transparent border-0 text-black opacity-5 float-right text-3xl leading-none font-semibold outline-none focus:outline-none"
+          (click)="toggleModal()"
+        >
+          <span
+            class="bg-transparent text-black opacity-5 h-6 w-6 text-2xl block outline-none focus:outline-none"
+          >
+            x
+          </span>
+        </button>
+      </div>
+      <!--body-->
+      <div class="relative p-6 flex-auto">
+        <app-blog-details [blogDetail]="blogObject" [isPreview]="true" />
+      </div>
+      <!--footer-->
+      <div
+        class="flex items-center justify-end p-6 border-t border-solid border-blueGray-200 rounded-b"
+      >
+        <button
+          class="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+          type="button"
+          (click)="toggleModal()"
+        >
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<div *ngIf="showModal" class="opacity-25 fixed inset-0 z-40 bg-black"></div>

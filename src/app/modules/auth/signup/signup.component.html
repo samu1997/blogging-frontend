@@ -1,0 +1,40 @@
+<div class="form-wrapper">
+  <form class="form" [formGroup]="signupForm" (ngSubmit)="onSubmit(signupForm)">
+    <h4 class="form-title">Create your account</h4>
+    <div class="input-container">
+      <input
+        formControlName="name"
+        autocomplete="off"
+        type="text"
+        placeholder="Fullname"
+      />
+    </div>
+    <div class="input-container">
+      <input
+        formControlName="email"
+        autocomplete="off"
+        type="email"
+        placeholder="Email"
+      />
+    </div>
+    <div class="input-container">
+      <input
+        formControlName="password"
+        type="password"
+        placeholder="Password"
+      />
+    </div>
+    <button
+      type="submit"
+      class="submit"
+      color="primary"
+      [disabled]="signupForm.invalid"
+    >
+      Sign in
+    </button>
+    <p class="signup-link">
+      Already have an acount ?
+      <a (click)="router.navigate(['/auth/login'])" target="_blank">Sign in</a>
+    </p>
+  </form>
+</div>

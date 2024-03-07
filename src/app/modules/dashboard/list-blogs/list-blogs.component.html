@@ -1,0 +1,95 @@
+<!-- md:space-y-5 space-y-5  -->
+<!-- Text Header -->
+<header class="w-full container gap-4 mx-auto">
+  <div class="flex flex-col items-center py-10">
+    <a class="font-bold text-gray-800 uppercase hover:text-gray-700 text-5xl">
+      Artical Blogs
+    </a>
+    <p class="text-lg text-gray-600">Lorem Ipsum Dolor Sit Amet</p>
+  </div>
+</header>
+
+<div class="flex flex-col-reverse md:flex-row gap-4 md:gap-0">
+  <div class="w-full md:w-3/4">
+    <div class="p-4">
+      <p class="mb-4 text-2xl font-bold">&nbsp;</p>
+      <div
+        class="relative flex flex-col md:flex-row md:space-x-5 space-y-3 md:space-y-0 max-w-max md:max-w-6xl border-solid border border-gray-200 bg-white p-4 rounded-md"
+      >
+        <div class="w-full md:w-1/3 bg-white grid place-items-center group overflow-hidden">
+          <img
+            alt="tailwind logo"
+            class="rounded group-hover:scale-110 transition-all"
+            src="https://source.unsplash.com/collection/1346951/500x500?sig=1"
+          />
+        </div>
+        <div class="w-full md:w-2/3 bg-white space-y-2">
+          <div class="flex justify-between items-center">
+            <p class="text-gray-500 font-medium hidden md:block">Vacations</p>
+            <div class="flex items-center">
+              <svg
+                class="h-5 w-5 text-yellow-500"
+                fill="currentColor"
+                viewbox="0 0 20 20"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+                ></path>
+              </svg>
+              <p class="text-gray-600 font-bold text-sm ml-1">
+                4.96
+                <span class="text-gray-500 font-normal"> (76 reviews) </span>
+              </p>
+            </div>
+            <button aria-label="Example icon-button with menu icon">
+              <fa-icon [icon]="faIcons.faHeart"></fa-icon>
+            </button>
+            <span
+              class="inline-flex items-center rounded-full bg-red-50 px-2 py-1 text-xs font-medium text-red-700 ring-1 ring-inset ring-red-600/10"
+              >Superhost</span
+            >
+          </div>
+          <p class="font-black text-gray-800 md:text-3xl text-xl">
+            The Majestic and Wonderful Bahamas
+          </p>
+          <p
+            class="md:text-lg text-gray-500 text-base text-justify blog-description"
+          >
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Diam
+            sollicitudin tempor id eu nisl nunc. Sagittis eu volutpat odio
+            facilisis mauris sit. Sapien faucibus et molestie ac feugiat sed
+            lectus vestibulum. Nulla pellentesque dignissim enim sit amet. Nam
+            at lectus urna duis convallis. Duis convallis convallis tellus id
+            interdum velit laoreet id donec. Felis eget velit aliquet sagittis
+            id consectetur. Lacus sed viverra tellus in hac habitasse platea.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Diam
+            sollicitudin tempor id eu nisl nunc. Sagittis eu volutpat odio
+            facilisis mauris sit. Sapien faucibus et molestie ac feugiat sed
+            lectus vestibulum. Nulla pellentesque dignissim enim sit amet. Nam
+            at lectus urna duis convallis. Duis convallis convallis tellus id
+            interdum velit laoreet id donec. Felis eget velit aliquet sagittis
+            id consectetur. Lacus sed viverra tellus in hac habitasse platea.
+          </p>
+          <button
+            (click)="
+              router.navigate(['/dashboard/artical'], {
+                queryParams: { articalID: 1 }
+              })
+            "
+          >
+            Read more
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="w-full md:w-1/4 p-4">
+    <p class="mb-4 text-2xl font-bold">Popular blogs</p>
+    <div class="border-solid border border-gray-200 rounded-md">
+      <app-popular-blogs />
+    </div>
+  </div>
+</div>
