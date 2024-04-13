@@ -8,7 +8,7 @@
   </div>
 </header>
 
-<div class="sm:p-4">
+<div class="sm:p-4" *ngIf="profileData?.email !== undefined">
   <div class="border border-gray-200">
     <div class="p-8 bg-white mt-24">
       <div class="grid grid-cols-1 md:grid-cols-3">
@@ -17,15 +17,15 @@
         >
           <div>
             <p class="font-bold text-gray-700 text-xl">22</p>
-            <p class="text-gray-400">Friends</p>
+            <p class="text-gray-400">Followers</p>
           </div>
           <div>
             <p class="font-bold text-gray-700 text-xl">10</p>
-            <p class="text-gray-400">Photos</p>
+            <p class="text-gray-400">Following</p>
           </div>
           <div>
             <p class="font-bold text-gray-700 text-xl">89</p>
-            <p class="text-gray-400">Comments</p>
+            <p class="text-gray-400">Blogs</p>
           </div>
         </div>
         <div class="relative">
@@ -63,7 +63,8 @@
       </div>
       <div class="mt-20 text-center border-b pb-12">
         <h1 class="text-4xl font-medium text-gray-700">
-          Jessica Jones, <span class="font-light text-gray-500">27</span>
+          {{ profileData.name }}
+          <span class="font-light text-gray-500">(27)</span>
         </h1>
         <p class="font-light text-gray-600 mt-3">Bucharest, Romania</p>
         <p class="mt-8 text-gray-500">
@@ -78,9 +79,6 @@
           records all of his own music, giving it a warm, intimate feel with a
           solid groove structure. An artist of considerable range.
         </p>
-        <button class="text-indigo-500 py-2 px-4 font-medium mt-4">
-          Show more
-        </button>
       </div>
     </div>
   </div>

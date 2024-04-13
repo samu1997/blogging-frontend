@@ -10,6 +10,7 @@ import { BlogDetailsComponent } from '../../shared/components/blog-details/blog-
 
 // import ext library
 import { QuillModule } from 'ngx-quill';
+import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 
 @NgModule({
   declarations: [ProfileComponent, ListBlogsComponent, CreateEditBlogComponent],
@@ -45,6 +46,7 @@ import { QuillModule } from 'ngx-quill';
         ],
       },
     }),
+    NgxSkeletonLoaderModule,
   ],
 })
 export class AuthUserModule {}
