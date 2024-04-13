@@ -1,5 +1,5 @@
-import { Injectable, Inject } from '@angular/core';
-import { DOCUMENT } from '@angular/common';
+import { PLATFORM_ID, Injectable, Inject } from '@angular/core';
+import { DOCUMENT, isPlatformBrowser } from '@angular/common';
 import { JwtHelperService } from '@auth0/angular-jwt';
 
 import { isEmpty } from 'lodash';
@@ -9,12 +9,13 @@ const USER_KEY = 'auth-user';
   providedIn: 'root',
 })
 export class AuthService {
-  localStorage: any;
+  public isBrowser: boolean;
   constructor(
-    @Inject(DOCUMENT) private document: Document,
     public jwtHelper: JwtHelperService,
+    @Inject(DOCUMENT) private dom: Document,
+    @Inject(PLATFORM_ID) private platformId: Object,
   ) {
-    this.localStorage = document.defaultView?.localStorage;
+    this.isBrowser = isPlatformBrowser(platformId);
   }
 
   public isAuthenticated(): boolean {
@@ -28,14 +29,18 @@ export class AuthService {
   }
 
   public saveUser(user: any): void {
-    this.localStorage.removeItem(USER_KEY);
-    this.localStorage.setItem(USER_KEY, JSON.stringify(user));
+    if (this.isBrowser) {
+      window.localStorage.removeItem(USER_KEY);
+      window.localStorage.setItem(USER_KEY, JSON.stringify(user));
+    }
   }
 
   public getUser(): any {
-    const user = this.localStorage.getItem(USER_KEY);
-    if (user) {
-      return JSON.parse(user);
+    if (this.isBrowser) {
+      const user = window.localStorage.getItem(USER_KEY);
+      if (user) {
+        return JSON.parse(user);
+      }
     }
 
     return {};

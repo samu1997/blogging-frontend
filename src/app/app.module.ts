@@ -6,7 +6,11 @@ import {
 } from '@angular/platform-browser';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import {
+  HttpClientModule,
+  provideHttpClient,
+  withFetch,
+} from '@angular/common/http';
 
 // modules imports
 import { AppRoutingModule } from './app-routing.module';
@@ -21,7 +25,6 @@ import { FooterComponent } from './shared/components/footer/footer.component';
 import { httpInterceptorProviders } from './core/interceptor/http/http.interceptor';
 
 // ext library imports
-import { QuillModule } from 'ngx-quill';
 import { ToastrModule } from 'ngx-toastr';
 import { JwtModule } from '@auth0/angular-jwt';
 
@@ -45,7 +48,6 @@ export function tokenGetter() {
     FontAwesomeModule,
 
     // ext library imports
-    QuillModule.forRoot({}),
     ToastrModule.forRoot({
       timeOut: 4000,
       positionClass: 'toast-bottom-left',
@@ -60,6 +62,7 @@ export function tokenGetter() {
     }),
   ],
   providers: [
+    provideHttpClient(withFetch()),
     provideClientHydration(),
     provideAnimationsAsync(),
     httpInterceptorProviders,
