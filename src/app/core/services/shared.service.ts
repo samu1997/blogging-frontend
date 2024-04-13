@@ -1,11 +1,10 @@
 import { Injectable, signal } from '@angular/core';
 
-const USER_KEY = 'auth-user';
 @Injectable({
   providedIn: 'root',
 })
 export class SharedService {
-  private toastData = signal({ type: 'notShow', message: '' });
+  private toastData = signal({ type: '', message: '' });
   constructor() {}
 
   setToastData(update: any) {

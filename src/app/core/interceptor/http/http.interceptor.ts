@@ -15,9 +15,9 @@ export class HttpRequestInterceptor implements HttpInterceptor {
   constructor(private authService: AuthService) {}
 
   intercept(
-    request: HttpRequest<any>,
+    request: HttpRequest<unknown>,
     next: HttpHandler,
-  ): Observable<HttpEvent<any>> {
+  ): Observable<HttpEvent<unknown>> {
     request = request.clone({
       withCredentials: true,
     });

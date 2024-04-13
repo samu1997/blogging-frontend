@@ -4,7 +4,7 @@ import { Router, CanActivateFn } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { SharedService } from '../../services/shared.service';
 
-export const loginGuard: CanActivateFn = (route, state) => {
+export const loginGuard: CanActivateFn = () => {
   const authService = inject(AuthService);
   const sharedService = inject(SharedService);
   const router = inject(Router);

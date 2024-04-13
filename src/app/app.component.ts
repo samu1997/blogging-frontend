@@ -19,20 +19,20 @@ export class AppComponent {
       const effectData = this.sharedService.getToastData();
       const data = effectData();
       switch (data.type) {
-        case 'success': {
+        case 'success':
           this.toastr.success('Success', data.message, { progressBar: true });
           break;
-        }
-        case 'danger': {
+
+        case 'danger':
           this.toastr.error('Error', data.message, { progressBar: true });
           break;
-        }
-        case 'warning': {
+
+        case 'warning':
           this.toastr.warning('Warning', data.message, { progressBar: true });
           break;
-        }
 
         default:
+          this.toastr.clear();
           break;
       }
     });
