@@ -18,9 +18,16 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { NotFoundComponent } from './shared/components/not-found/not-found.component';
 import { FooterComponent } from './shared/components/footer/footer.component';
 
+import { httpInterceptorProviders } from './core/interceptor/http/http.interceptor';
+
 // ext library imports
 import { QuillModule } from 'ngx-quill';
+import { ToastrModule } from 'ngx-toastr';
+import { JwtModule } from '@auth0/angular-jwt';
 
+export function tokenGetter() {
+  return localStorage.getItem('auth-user');
+}
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,8 +46,24 @@ import { QuillModule } from 'ngx-quill';
 
     // ext library imports
     QuillModule.forRoot({}),
+    ToastrModule.forRoot({
+      timeOut: 4000,
+      positionClass: 'toast-bottom-left',
+      preventDuplicates: true,
+    }),
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: tokenGetter,
+        allowedDomains: ['example.com'],
+        disallowedRoutes: ['http://example.com/examplebadroute/'],
+      },
+    }),
   ],
-  providers: [provideClientHydration(), provideAnimationsAsync()],
+  providers: [
+    provideClientHydration(),
+    provideAnimationsAsync(),
+    httpInterceptorProviders,
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

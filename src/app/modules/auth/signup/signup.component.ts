@@ -36,6 +36,8 @@ export class SignupComponent implements OnInit {
       // true or false
       console.log('Name', form.value.email);
       console.log('Password', form.value.password);
+
+      // this.router.navigate(['/auth/login']);
     }
   }
 }

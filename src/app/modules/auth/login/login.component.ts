@@ -8,6 +8,10 @@ import {
   FormBuilder,
 } from '@angular/forms';
 
+import { DataService } from '../../../core/services/data.service';
+import { AuthService } from '../../../core/services/auth.service';
+import { loginUser } from '../../../core/interfaces/users.interface';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -22,6 +26,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     public router: Router,
+    private apiService: DataService,
+    private authService: AuthService,
   ) {}
 
   ngOnInit(): void {
@@ -33,9 +39,14 @@ export class LoginComponent implements OnInit {
 
   onSubmit(form: FormGroup) {
     if (form.valid) {
-      // true or false
-      console.log('Name', form.value.email);
-      console.log('Password', form.value.password);
+      const payload: loginUser = {
+        email: form.value.email,
+        password: form.value.password,
+      };
+      this.apiService.userLogin(payload).subscribe((data: any) => {
+        this.authService.saveUser(data);
+        this.router.navigate(['/dashboard']);
+      });
     }
   }
 

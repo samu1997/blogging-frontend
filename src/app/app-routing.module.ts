@@ -2,11 +2,15 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { NotFoundComponent } from './shared/components/not-found/not-found.component';
 
+import { loginGuard } from './core/guards/login/login.guard';
+import { authGuard } from './core/guards/auth/auth.guard';
+
 const routes: Routes = [
   {
     path: 'auth',
     loadChildren: () =>
       import('./modules/auth/auth.module').then((m) => m.AuthModule),
+    canActivate: [loginGuard],
   },
   {
     path: 'dashboard',
@@ -21,6 +25,7 @@ const routes: Routes = [
       import('./modules/auth-user/auth-user.module').then(
         (m) => m.AuthUserModule,
       ),
+    canActivate: [authGuard],
   },
   {
     path: '',

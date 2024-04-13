@@ -206,7 +206,7 @@
             >
               <!-- Active: "bg-gray-100", Not Active: "" -->
               <a
-                (click)="router.navigate(['/user/profile'])"
+                (click)="router.navigate(['/user/profile']); toggleMenu()"
                 class="block px-4 py-2 text-sm text-gray-700 cursor-pointer"
                 role="menuitem"
                 tabindex="-1"
@@ -218,12 +218,13 @@
                 role="menuitem"
                 tabindex="-1"
                 id="user-menu-item-1"
-                (click)="router.navigate(['/auth/login'])"
+                (click)="router.navigate(['/auth/login']); toggleMenu()"
                 >Login</a
               >
               <a
                 class="block px-4 py-2 text-sm text-gray-700 cursor-pointer"
                 role="menuitem"
+                (click)="toggleMenu()"
                 tabindex="-1"
                 id="user-menu-item-2"
                 >Sign out</a
