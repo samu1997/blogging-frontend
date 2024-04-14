@@ -8,23 +8,16 @@ import { authGuard } from './core/guards/auth/auth.guard';
 const routes: Routes = [
   {
     path: 'auth',
-    loadChildren: () =>
-      import('./modules/auth/auth.module').then((m) => m.AuthModule),
+    loadChildren: () => import('./modules/auth/auth.module').then((m) => m.AuthModule),
     canActivate: [loginGuard],
   },
   {
     path: 'dashboard',
-    loadChildren: () =>
-      import('./modules/dashboard/dashboard.module').then(
-        (m) => m.DashboardModule,
-      ),
+    loadChildren: () => import('./modules/dashboard/dashboard.module').then((m) => m.DashboardModule),
   },
   {
     path: 'user',
-    loadChildren: () =>
-      import('./modules/auth-user/auth-user.module').then(
-        (m) => m.AuthUserModule,
-      ),
+    loadChildren: () => import('./modules/auth-user/auth-user.module').then((m) => m.AuthUserModule),
     canActivate: [authGuard],
   },
   {

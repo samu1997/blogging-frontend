@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-// import { EditorChangeContent, EditorChangeSelection } from 'ngx-quill';
-import Quill from 'quill';
 
 @Component({
   selector: 'app-create-edit-blog',
@@ -8,10 +6,10 @@ import Quill from 'quill';
   styleUrl: './create-edit-blog.component.scss',
 })
 export class CreateEditBlogComponent implements OnInit {
-  public blogContent: any = {};
+  public blogContent: object = {};
   public blogTitle: string = '';
-  public blogStatus: any = '';
-  public blogObject: any = {};
+  public blogStatus: string = '';
+  public blogObject: object = {};
   public showModal: boolean = false;
 
   constructor() {}

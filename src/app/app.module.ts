@@ -1,16 +1,9 @@
 // ng library imports
 import { NgModule } from '@angular/core';
-import {
-  BrowserModule,
-  provideClientHydration,
-} from '@angular/platform-browser';
+import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import {
-  HttpClientModule,
-  provideHttpClient,
-  withFetch,
-} from '@angular/common/http';
+import { HttpClientModule, provideHttpClient, withFetch } from '@angular/common/http';
 
 // modules imports
 import { AppRoutingModule } from './app-routing.module';
@@ -32,12 +25,7 @@ export function tokenGetter() {
   return localStorage.getItem('auth-user');
 }
 @NgModule({
-  declarations: [
-    AppComponent,
-    NavbarComponent,
-    NotFoundComponent,
-    FooterComponent,
-  ],
+  declarations: [AppComponent, NavbarComponent, NotFoundComponent, FooterComponent],
   imports: [
     // ng library imports
     BrowserModule,

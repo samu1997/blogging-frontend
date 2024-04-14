@@ -21,3 +21,8 @@ export interface createUser {
   password: string;
   mobile: number;
 }
+
+export interface getProfileData {
+  status: string;
+  data: object;
+}

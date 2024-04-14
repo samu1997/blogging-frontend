@@ -13,7 +13,7 @@ import { QuillModule } from 'ngx-quill';
   styleUrl: './blog-details.component.css',
 })
 export class BlogDetailsComponent implements OnInit {
-  @Input() blogDetail?: any;
+  @Input() blogDetail?: object;
   @Input() isPreview?: boolean = false;
   public author: string = 'John Doe';
 

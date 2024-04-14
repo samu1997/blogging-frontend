@@ -1,12 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { Router } from '@angular/router';
-import {
-  FormControl,
-  FormGroup,
-  Validators,
-  FormBuilder,
-} from '@angular/forms';
+import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
 
 import { DataService } from '../../../core/services/data.service';
 import { AuthService } from '../../../core/services/auth.service';
@@ -55,8 +50,6 @@ export class LoginComponent implements OnInit {
       return 'You must enter a value';
     }
 
-    return this.loginForm.get([field])?.hasError('email')
-      ? 'Not a valid email'
-      : '';
+    return this.loginForm.get([field])?.hasError('email') ? 'Not a valid email' : '';
   }
 }

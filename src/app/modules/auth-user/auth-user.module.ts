@@ -7,6 +7,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { ListBlogsComponent } from './list-blogs/list-blogs.component';
 import { CreateEditBlogComponent } from './create-edit-blog/create-edit-blog.component';
 import { BlogDetailsComponent } from '../../shared/components/blog-details/blog-details.component';
+import { DialogComponent } from '../../shared/components/dialog/dialog.component';
 
 // import ext library
 import { QuillModule } from 'ngx-quill';
@@ -20,6 +21,7 @@ import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
     FormsModule,
     ReactiveFormsModule,
     BlogDetailsComponent,
+    DialogComponent,
     // import ext library
     QuillModule.forRoot({
       modules: {

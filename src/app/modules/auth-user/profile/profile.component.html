@@ -78,3 +78,12 @@
     </div>
   </div>
 </div>
+<app-dialog
+  [showModal]="showModal"
+  [dialogTitle]="'Edit details'"
+  (toggleModal)="toggleModal()"
+>
+  <div class="content-body"></div>
+</app-dialog>
+
+<div *ngIf="showModal" class="opacity-25 fixed inset-0 z-40 bg-black"></div>
