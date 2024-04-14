@@ -14,7 +14,9 @@ export class CreateEditBlogComponent implements OnInit {
 
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    console.log('');
+  }
 
   saveBlog() {
     const obj = {

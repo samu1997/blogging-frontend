@@ -7,6 +7,9 @@ export interface Users {
   status: string;
   role: string;
   name?: string | null | undefined;
+  bio: string;
+  dob: string;
+  place: string;
 }
 
 export interface loginUser {

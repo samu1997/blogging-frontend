@@ -25,8 +25,8 @@ export class DataService {
     private sharedService: SharedService,
   ) {}
 
-  userLogin(data: loginUser): Observable<Users[]> {
-    return this.http.post<Users[]>(`${this.baseURL}/v1/users/login`, data, this.httpOptions).pipe(
+  userLogin(data: loginUser): Observable<Users> {
+    return this.http.post<Users>(`${this.baseURL}/v1/users/login`, data, this.httpOptions).pipe(
       catchError((error) => {
         this.sharedService.setToastData({
           type: 'danger',
@@ -39,8 +39,8 @@ export class DataService {
     );
   }
 
-  createUser(data: createUser): Observable<Users[]> {
-    return this.http.post<Users[]>(`${this.baseURL}/v1/users`, data, this.httpOptions).pipe(
+  createUser(data: createUser): Observable<Users> {
+    return this.http.post<Users>(`${this.baseURL}/v1/users`, data, this.httpOptions).pipe(
       catchError((error) => {
         this.sharedService.setToastData({
           type: 'danger',
@@ -55,6 +55,20 @@ export class DataService {
 
   getProfile(): Observable<getProfileData> {
     return this.http.get<getProfileData>(`${this.baseURL}/v1/users`, this.httpOptions).pipe(
+      catchError((error) => {
+        this.sharedService.setToastData({
+          type: 'danger',
+          message: error.error.message,
+        });
+        // Handle the error and optionally log it
+        console.error('API Error:', error);
+        return throwError(() => new Error(error.error.message));
+      }),
+    );
+  }
+
+  updateProfile(payload: unknown): Observable<Users> {
+    return this.http.put<Users>(`${this.baseURL}/v1/users`, payload, this.httpOptions).pipe(
       catchError((error) => {
         this.sharedService.setToastData({
           type: 'danger',

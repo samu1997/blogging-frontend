@@ -2,7 +2,7 @@ import { PLATFORM_ID, Injectable, Inject } from '@angular/core';
 import { DOCUMENT, isPlatformBrowser } from '@angular/common';
 import { JwtHelperService } from '@auth0/angular-jwt';
 
-import { isEmpty } from 'lodash';
+import _ from 'lodash';
 
 const USER_KEY = 'auth-user';
 @Injectable({
@@ -13,7 +13,7 @@ export class AuthService {
   constructor(
     public jwtHelper: JwtHelperService,
     @Inject(DOCUMENT) private dom: Document,
-    @Inject(PLATFORM_ID) private platformId: Object,
+    @Inject(PLATFORM_ID) private platformId: object,
   ) {
     this.isBrowser = isPlatformBrowser(platformId);
   }
@@ -22,7 +22,7 @@ export class AuthService {
     const token = this.getUser();
     // Check whether the token is expired and return
     // true or false
-    if (isEmpty(token)) {
+    if (_.isEmpty(token)) {
       return false;
     }
     return !this.jwtHelper.isTokenExpired(token.token);
